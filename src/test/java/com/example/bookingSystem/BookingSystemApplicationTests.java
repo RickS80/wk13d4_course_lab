@@ -52,4 +52,9 @@ public class BookingSystemApplicationTests {
 		List<Booking> result = bookingRepository.getBookingsByDate("28-02-19");
 	}
 
+	@Test
+	public void canGetCustomersByTownAndByCourseID(){
+		List<Customer> result = customerRepository.getCustomersByTownAndByCourseID("edinburgh", 2L);
+	}
+
 }

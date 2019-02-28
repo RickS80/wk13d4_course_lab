@@ -10,4 +10,5 @@ public interface CustomerRepository extends JpaRepository<Customer, Long>, Custo
     //  Get all customers for a given course
     List<Customer> getCustomersByCourseId(Long id);
 
+    List<Customer> getCustomersByTownAndByCourseID(String customerTown, Long courseId);
 }
