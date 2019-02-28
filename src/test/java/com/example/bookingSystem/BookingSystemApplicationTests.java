@@ -1,5 +1,6 @@
 package com.example.bookingSystem;
 
+import com.example.bookingSystem.models.Booking;
 import com.example.bookingSystem.models.Course;
 import com.example.bookingSystem.models.Customer;
 import com.example.bookingSystem.repositories.BookingRepositories.BookingRepository;
@@ -44,6 +45,11 @@ public class BookingSystemApplicationTests {
 	@Test
 	public void canGetCoursesbyCustomerId(){
 		List<Course> result = courseRepository.getCoursesByCustomerID(1L);
+	}
+
+	@Test
+	public void canGetBookingsByDate(){
+		List<Booking> result = bookingRepository.getBookingsByDate("28-02-19");
 	}
 
 }
