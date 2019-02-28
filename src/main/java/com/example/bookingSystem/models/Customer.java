@@ -1,6 +1,7 @@
 package com.example.bookingSystem.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -24,8 +25,8 @@ public class Customer {
     @Column(name = "age")
     private int age;
 
-    @JsonIgnore
-    @OneToMany(mappedBy = "customer", fetch = FetchType.LAZY)
+    @JsonIgnoreProperties({"customer", "course"})
+    @OneToMany(mappedBy = "customer")
     private List<Booking> bookings;
 
     public Customer(String customerName, String customerTown, int age){
