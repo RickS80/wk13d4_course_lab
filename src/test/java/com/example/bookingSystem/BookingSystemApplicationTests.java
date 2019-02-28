@@ -57,4 +57,11 @@ public class BookingSystemApplicationTests {
 		List<Customer> result = customerRepository.getCustomersByTownAndByCourseID("edinburgh", 2L);
 	}
 
+	@Test
+	public void canGetCustomersByTownAndCourseIDOverACertainAge(){
+		List<Customer> result = customerRepository.getCustomersByTownAndByCourseIDOverCertainAge("edinburgh",2L, 30);
+	}
+
+
+
 }

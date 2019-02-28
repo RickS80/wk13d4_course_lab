@@ -49,4 +49,23 @@ public class CustomerRepositoryImpl implements CustomerRepositoryCustom{
         return result;
     }
 
+    @Override
+    public List<Customer> getCustomersByTownAndByCourseIDOverCertainAge(String customerTown, Long courseID, int age){
+        List<Customer> result = null;
+
+        Session session = entityManager.unwrap(Session.class);
+        Criteria cr = session.createCriteria(Customer.class);
+
+        cr.add(Restrictions.eq("customerTown", customerTown));
+        cr.add(Restrictions.gt("age", age));
+
+        cr.createAlias("bookings", "bookingAlias");
+        cr.createAlias("bookingAlias.course", "courseAlias");
+        cr.add(Restrictions.eq("courseAlias.id", courseID));
+
+        result = cr.list();
+
+        return result;
+    }
+
 }
