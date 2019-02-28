@@ -1,7 +1,10 @@
 package com.example.bookingSystem;
 
 import com.example.bookingSystem.models.Course;
+import com.example.bookingSystem.models.Customer;
+import com.example.bookingSystem.repositories.BookingRepositories.BookingRepository;
 import com.example.bookingSystem.repositories.CourseRepositories.CourseRepository;
+import com.example.bookingSystem.repositories.CustomerRepositories.CustomerRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +20,12 @@ public class BookingSystemApplicationTests {
 	@Autowired
 	CourseRepository courseRepository;
 
+	@Autowired
+	CustomerRepository customerRepository;
+
+	@Autowired
+	BookingRepository bookingRepository;
+
 	@Test
 	public void contextLoads() {
 	}
@@ -24,10 +33,12 @@ public class BookingSystemApplicationTests {
 
 	@Test
 	public void canGetCoursesByRating(){
-
-
 		List<Course> result = courseRepository.getCoursesByStarRating(4);
+	}
 
+	@Test
+	public void canGetCustomersByCourseId(){
+		List<Customer> result = customerRepository.getCustomersByCourseId(2L);
 	}
 
 }
